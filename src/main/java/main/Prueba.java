@@ -16,9 +16,10 @@ public class Prueba {
 		EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("jpa_sesion02GIT");
 		EntityManager em = fabrica.createEntityManager();
 		
-		Query query =em.createNativeQuery("{call usp_validaAcceso(?,?)}",TbUsuario.class);	
+		Query query = em.createNativeQuery("{call usp_validaAcceso(?,?)}",TbUsuario.class);	
 		query.setParameter(1,"U001@gmail.com");
-		query.setParameter(2,"1001");
+		query.setParameter(2,"10001");
+		
 		TbUsuario u = (TbUsuario) query.getSingleResult();
 		if (u==null){
 			System.out.println("Usuario no existe");
@@ -26,7 +27,7 @@ public class Prueba {
 			System.out.println("Bienvenido" + u.getNomUsua());
 			System.out.println("Tus datos son : " + u);
 		}
-		
+		System.out.println("----------------------------------------------");
 		
 		
 	}
